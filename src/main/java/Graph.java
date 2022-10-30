@@ -2,29 +2,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Graph {
-        int V;
-        ArrayList<Integer>[] verticesInfo;
+        static int V;
+        static ArrayList<Integer>[] verticesInfo;
 
 
         public Graph(int V) {
-            this.V = V;
+            Graph.V = V;
             verticesInfo = new ArrayList[V];
             for (int i = 0; i < V; i++) {
                 verticesInfo[i] = new ArrayList<>();
             }
         }
 
-        ArrayList<Integer>[] addEdge(int a, int b) {
+         ArrayList<Integer>[] addEdge(int a, int b) {
             verticesInfo[a].add(b);
             verticesInfo[b].add(a);
             return verticesInfo;
         }
 
-        List<Integer> adjacent(int v) {
+         List<Integer> adjacent(int v) {
             return verticesInfo[v];
         }
 
-        int dfs(int v, int mark, int[] marks) {
+      int dfs(int v, int mark, int[] marks) {
             marks[v] = mark;
             int size = 1;
             for (int vv : adjacent(v)) {
@@ -35,7 +35,7 @@ public class Graph {
             return size;
         }
 
-        int[] calcPaths (){
+         int[] calcPaths(){
             int[] marks = new int[V];
             int mark = 7;
             int[] markSizes = new int[V];
